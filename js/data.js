@@ -95,4 +95,4 @@ const getPictures = () => Array.from(
 
 getPictures();
 
-export {getPictures, COMMENTS, MIN_DESCRIPTION_COUNT, MAX_DESCRIPTION_COUNT};
+export {getPictures};
