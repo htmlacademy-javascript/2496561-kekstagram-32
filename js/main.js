@@ -1,4 +1,5 @@
 import {getPictures} from './data.js';
-import './pictures.js';
+import './thumbnail.js';
+import './big-pictures.js';
 
 getPictures();
