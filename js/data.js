@@ -60,19 +60,12 @@ const getRandomComment = () => {
   return comments.join(' ');
 };
 
-const createComment = () => {
-  const commentCount = getRandomInteger(MIN_COMMENT_COUNT, MAX_COMMENT_COUNT);
-  const comment = [];
-  for (let i = 0; i <= commentCount; i++) {
-    comment.push({
-      id: getRandomInteger(),
-      avatar: `img/avatar-${getRandomInteger(MIN_AVATAR_COUNT, MAX_AVATAR_COUNT)}.svg`,
-      message: getRandomComment(),
-      name: getRandomArrayElement(NAMES),
-    });
-  }
-  return comment;
-};
+const createComment = () => ({
+  id: getRandomInteger(),
+  avatar: `img/avatar-${getRandomInteger(MIN_AVATAR_COUNT, MAX_AVATAR_COUNT)}.svg`,
+  message: getRandomComment(),
+  name: getRandomArrayElement(NAMES),
+});
 
 const createPictures = (index) => ({
   id: index,
