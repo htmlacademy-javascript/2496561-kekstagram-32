@@ -54,39 +54,26 @@ const MAX_DESCRIPTION_COUNT = 2;
 const getRandomComment = () => {
   const commentParts = getRandomInteger(MIN_DESCRIPTION_COUNT, MAX_DESCRIPTION_COUNT);
   const comments = [];
-  for (let i = 0; i < commentParts; i++) {
+  for (let i = 0; i <= commentParts; i++) {
     comments.push(getRandomArrayElement(COMMENTS));
   }
   return comments.join(' ');
 };
 
-const generateComments = () => {
-  const commentCount = getRandomInteger(MIN_COMMENT_COUNT, MAX_COMMENT_COUNT);
-  const comments = [];
-  for (let i = 0; i < commentCount; i++) {
-    comments.push({
-      id: getRandomInteger(1, 10000),
-      avatar: `img/avatar-${getRandomInteger(MIN_AVATAR_COUNT, MAX_AVATAR_COUNT)}.svg`,
-      message: getRandomComment(),
-      name: getRandomArrayElement(NAMES),
-    });
-  }
-  return comments;
-};
+const createComment = () => ({
+  id: getRandomInteger(),
+  avatar: `img/avatar-${getRandomInteger(MIN_AVATAR_COUNT, MAX_AVATAR_COUNT)}.svg`,
+  message: getRandomComment(),
+  name: getRandomArrayElement(NAMES),
+});
 
-const createPictures = () => {
-  const photos = [];
-  for (let i = 1; i <= PICTURE_COUNT; i++) {
-    photos.push({
-      id: i,
-      url: `photos/${i}.jpg`,
-      description: getRandomArrayElement(DESCRIPTION),
-      likes: getRandomInteger(MIN_LIKE_COUNT, MAX_LIKE_COUNT),
-      comments: generateComments(i),
-    });
-  }
-  return photos;
-};
+const createPictures = (index) => ({
+  id: index,
+  url: `photos/${index}.jpg`,
+  description: getRandomArrayElement(DESCRIPTION),
+  likes: getRandomInteger(MIN_LIKE_COUNT, MAX_LIKE_COUNT),
+  comments: Array.from({length: getRandomInteger(MIN_COMMENT_COUNT, MAX_COMMENT_COUNT)}, createComment)
+});
 
 const getPictures = () => Array.from(
   {length: PICTURE_COUNT},
