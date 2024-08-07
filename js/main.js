@@ -1,8 +1,10 @@
 import {getData, sendData} from './api.js';
-import {showAlert} from './utils.js';
+import {showAlert, debounce} from './utils.js';
 import {renderGallery} from './gallery.js';
 import {setOnFormSubmit, hideModal} from './form.js';
 import {showSuccessMessage, showErrorMessage} from './message.js';
+import {init as initFilter, getFilteredPictures} from './filter.js';
+
 
 setOnFormSubmit(async (data) => {
   try {
@@ -16,6 +18,9 @@ setOnFormSubmit(async (data) => {
 
 try {
   const data = await getData();
+  const debouncedRenderGallery = debounce(renderGallery);
+  initFilter(data, debouncedRenderGallery);
+  renderGallery(getFilteredPictures());
   renderGallery(data);
 } catch {
   showAlert();

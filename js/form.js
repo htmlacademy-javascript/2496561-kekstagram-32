@@ -77,7 +77,7 @@ const hasUniqueTags = (value) => {
 const isErrorMessageShown = () => Boolean(document.querySelector('.error'));
 
 function onDocumentKeyDown(evt) {
-  if (isEscapeKey && !isTextFieldFocused && !isErrorMessageShown()) {
+  if (isEscapeKey(evt) && !isTextFieldFocused() && !isErrorMessageShown()) {
     evt.preventDefault();
     hideModal();
   }

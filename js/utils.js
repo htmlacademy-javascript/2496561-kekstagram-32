@@ -15,4 +15,12 @@ const showAlert = () => {
   }, ALERT_SHOW_TIME);
 };
 
-export {isEscapeKey, showAlert};
+const debounce = (callback, timeoutDelay = 5000) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+export {isEscapeKey, showAlert, debounce};
