@@ -15,7 +15,7 @@ const showAlert = () => {
   }, ALERT_SHOW_TIME);
 };
 
-const debounce = (callback, timeoutDelay = 5000) => {
+const debounce = (callback, timeoutDelay = 500) => {
   let timeoutId;
   return (...rest) => {
     clearTimeout(timeoutId);
