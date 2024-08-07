@@ -11,10 +11,8 @@
     "url": "https://github.com/htmlacademy-javascript/2496561-kekstagram-32/issues"
   },
   "devDependencies": {
-    "@linthtml/linthtml": "^0.10.1",
     "eslint": "8.48.0",
     "eslint-config-htmlacademy": "9.1.1",
-    "linthtml-config-htmlacademy": "^1.0.25",
     "vite": "4.4.9"
   },
   "license": "MIT",
