@@ -16,6 +16,7 @@ const createThumbnail = ({ comments, description, likes, url, id }) => {
 };
 
 const generateThumbnails = (pictures, container) => {
+  container.querySelectorAll('.picture').forEach((element) => element.remove());
   const fragment = document.createDocumentFragment();
   pictures.forEach((picture) => {
     const thumbnail = createThumbnail(picture);
